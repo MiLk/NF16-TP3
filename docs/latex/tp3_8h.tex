@@ -1,0 +1,483 @@
+\hypertarget{tp3_8h}{
+\section{\-Référence du fichier tp3.h}
+\label{tp3_8h}\index{tp3.\-h@{tp3.\-h}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\*
+{\ttfamily \#include \char`\"{}string.\-h\char`\"{}}\*
+\subsection*{\-Structures de données}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtask}{task}
+\begin{DoxyCompactList}\small\item\em \-Tâche à accomplir par le processeur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{tp3_8h_a30d15c4e157e74ff0dce48d4754e93d3}{\-M\-A\-X\-\_\-\-N\-O\-M}~100
+\end{DoxyCompactItemize}
+\subsection*{\-Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structtask}{task} \hyperlink{tp3_8h_a37d6071537b9d2c9f6e7cff82ebf8711}{task}
+\end{DoxyCompactItemize}
+\subsection*{\-Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a0954e10531b8b2310f0772444423ec69}{cree\-\_\-tache} (char caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]}, int duree)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a3d1ec97a4e1e5968d37a99ad45e5b65a}{cree\-\_\-liste} (\hyperlink{structtask}{task} $\ast$tache)
+\item 
+void \hyperlink{tp3_8h_abd7466b95b9289d238fe5496e0067229}{affiche\-\_\-liste} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+int \hyperlink{tp3_8h_a81020f508470a970a9610106878adb26}{ajoute\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task, \hyperlink{structtask}{task} $\ast$ptache)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a9fc068d8b802bdd1f328f83790a180a6}{annule\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task, char caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]})
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a0011e079774e623de8a227b32330c30e}{libere\-\_\-liste} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_ad28cda3b6ad0d9eeb8574005d1332d22}{execute\-\_\-tache\-\_\-\-F\-I\-F\-O} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a1c01d87a6dc65ca4d7cea9bb267e6587}{execute\-\_\-tache\-\_\-\-L\-I\-F\-O} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_ab8cb0270db7689822c87070e11acce8c}{fusion\-\_\-listes} (\hyperlink{structtask}{task} $\ast$list\-\_\-task1, \hyperlink{structtask}{task} $\ast$list\-\_\-task2)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a16802f6514ce927f75b6e40602afed41}{insere\-\_\-tache\-\_\-priorite} (\hyperlink{structtask}{task} $\ast$list\-\_\-task, \hyperlink{structtask}{task} $\ast$ptache)
+\item 
+int \hyperlink{tp3_8h_aff8eb6ceb279a1298af9fc80e68f3c24}{\-M\-A\-J\-\_\-priorite} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_aeed2363afb8ab9c17aeb64cf5d70b86b}{derniere\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_ac7d02b8afdf7b5f6e67c177da0802034}{avant\-\_\-derniere\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a6a954ecfdf0ab338c31135461a5bafe2}{recherche\-\_\-predecesseur\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task, char caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]})
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_ac7de9f16c075fce177f07578838b18ac}{insere\-\_\-tache} (\hyperlink{structtask}{task} $\ast$list\-\_\-task, \hyperlink{structtask}{task} $\ast$toinsert)
+\item 
+void \hyperlink{tp3_8h_a43d50522a645f35a10122ae17360b86a}{execution} (\hyperlink{structtask}{task} $\ast$ptask)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a02456105df8b6052fe143de50cb66a5a}{charge\-\_\-tache} (\-F\-I\-L\-E $\ast$file, \hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\item 
+\hyperlink{structtask}{task} $\ast$ \hyperlink{tp3_8h_a3e4b2abfeff40bc1561e9b6f8b58b5ed}{charge\-\_\-tache\-\_\-priorite} (\-F\-I\-L\-E $\ast$file, \hyperlink{structtask}{task} $\ast$list\-\_\-task)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Documentation des macros}
+\hypertarget{tp3_8h_a30d15c4e157e74ff0dce48d4754e93d3}{
+\index{tp3.\-h@{tp3.\-h}!\-M\-A\-X\-\_\-\-N\-O\-M@{\-M\-A\-X\-\_\-\-N\-O\-M}}
+\index{\-M\-A\-X\-\_\-\-N\-O\-M@{\-M\-A\-X\-\_\-\-N\-O\-M}!tp3.h@{tp3.\-h}}
+\subsubsection[{\-M\-A\-X\-\_\-\-N\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-A\-X\-\_\-\-N\-O\-M~100}}
+\label{tp3_8h_a30d15c4e157e74ff0dce48d4754e93d3}
+\-Longueur maximale de l'identifiant de tâche 
+
+\-Définition à la ligne 17 du fichier tp3.\-h.
+
+
+
+\subsection{\-Documentation des définitions de type}
+\hypertarget{tp3_8h_a37d6071537b9d2c9f6e7cff82ebf8711}{
+\index{tp3.\-h@{tp3.\-h}!task@{task}}
+\index{task@{task}!tp3.h@{tp3.\-h}}
+\subsubsection[{task}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf task}  {\bf task}}}
+\label{tp3_8h_a37d6071537b9d2c9f6e7cff82ebf8711}
+
+
+\subsection{\-Documentation des fonctions}
+\hypertarget{tp3_8h_abd7466b95b9289d238fe5496e0067229}{
+\index{tp3.\-h@{tp3.\-h}!affiche\-\_\-liste@{affiche\-\_\-liste}}
+\index{affiche\-\_\-liste@{affiche\-\_\-liste}!tp3.h@{tp3.\-h}}
+\subsubsection[{affiche\-\_\-liste}]{\setlength{\rightskip}{0pt plus 5cm}void affiche\-\_\-liste (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_abd7466b95b9289d238fe5496e0067229}
+\-Fonction 3 \-: \-Affiche la liste des tâches de la liste spécifiée. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Pointeur sur la première tâche de la liste de tâches. \\
+\hline
+\end{DoxyParams}
+
+
+\-Définition à la ligne 21 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a81020f508470a970a9610106878adb26}{
+\index{tp3.\-h@{tp3.\-h}!ajoute\-\_\-tache@{ajoute\-\_\-tache}}
+\index{ajoute\-\_\-tache@{ajoute\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{ajoute\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}int ajoute\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task, }
+\item[{{\bf task} $\ast$}]{ptache}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a81020f508470a970a9610106878adb26}
+\-Fonction 4 \-: \-Ajoute une nouvelle tâche à la fin de la liste des tâches. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Pointeur sur le début de la liste de tâches. \\
+\hline
+{\em ptache} & \-Nouvelle tâche. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 35 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a9fc068d8b802bdd1f328f83790a180a6}{
+\index{tp3.\-h@{tp3.\-h}!annule\-\_\-tache@{annule\-\_\-tache}}
+\index{annule\-\_\-tache@{annule\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{annule\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ annule\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task, }
+\item[{char}]{caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a9fc068d8b802bdd1f328f83790a180a6}
+\-Fonction 5 \-: \-Annule l'exécution d'une tâche avant qu'elle ne soit traitée. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste de tâches. \\
+\hline
+{\em caract} & \-Identifiant de la tâche. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Pointeur sur la première tâche de la liste. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 42 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_ac7d02b8afdf7b5f6e67c177da0802034}{
+\index{tp3.\-h@{tp3.\-h}!avant\-\_\-derniere\-\_\-tache@{avant\-\_\-derniere\-\_\-tache}}
+\index{avant\-\_\-derniere\-\_\-tache@{avant\-\_\-derniere\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{avant\-\_\-derniere\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ avant\-\_\-derniere\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_ac7d02b8afdf7b5f6e67c177da0802034}
+\-Retourne l'avant-\/dernière tâche d'une liste de tâches. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Avant-\/dernière tâche de la liste de tâches. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 149 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a02456105df8b6052fe143de50cb66a5a}{
+\index{tp3.\-h@{tp3.\-h}!charge\-\_\-tache@{charge\-\_\-tache}}
+\index{charge\-\_\-tache@{charge\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{charge\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ charge\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{\-F\-I\-L\-E $\ast$}]{file, }
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a02456105df8b6052fe143de50cb66a5a}
+\-Charge une tâche dans la liste depuis un fichier. 
+\begin{DoxyParams}{\-Paramètres}
+{\em file} & \\
+\hline
+{\em list\-\_\-task} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Liste des tâches. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 204 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a3e4b2abfeff40bc1561e9b6f8b58b5ed}{
+\index{tp3.\-h@{tp3.\-h}!charge\-\_\-tache\-\_\-priorite@{charge\-\_\-tache\-\_\-priorite}}
+\index{charge\-\_\-tache\-\_\-priorite@{charge\-\_\-tache\-\_\-priorite}!tp3.h@{tp3.\-h}}
+\subsubsection[{charge\-\_\-tache\-\_\-priorite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ charge\-\_\-tache\-\_\-priorite (
+\begin{DoxyParamCaption}
+\item[{\-F\-I\-L\-E $\ast$}]{file, }
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a3e4b2abfeff40bc1561e9b6f8b58b5ed}
+\-Charge une tâche dans la liste depuis un fichier en utilisant les priorités. 
+\begin{DoxyParams}{\-Paramètres}
+{\em file} & \\
+\hline
+{\em list\-\_\-task} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Liste des tâches. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 216 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a3d1ec97a4e1e5968d37a99ad45e5b65a}{
+\index{tp3.\-h@{tp3.\-h}!cree\-\_\-liste@{cree\-\_\-liste}}
+\index{cree\-\_\-liste@{cree\-\_\-liste}!tp3.h@{tp3.\-h}}
+\subsubsection[{cree\-\_\-liste}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ cree\-\_\-liste (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{tache}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a3d1ec97a4e1e5968d37a99ad45e5b65a}
+\-Fonction 2 \-: \-Initialise une liste à partir d'un pointeur de tâche. 
+\begin{DoxyParams}{\-Paramètres}
+{\em tache} & \-Tâche permettant l'initialisation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Pointeur sur la première tâche de la liste. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 16 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a0954e10531b8b2310f0772444423ec69}{
+\index{tp3.\-h@{tp3.\-h}!cree\-\_\-tache@{cree\-\_\-tache}}
+\index{cree\-\_\-tache@{cree\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{cree\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ cree\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{char}]{caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]}, }
+\item[{int}]{duree}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a0954e10531b8b2310f0772444423ec69}
+\-Fonction 1 \-: \-Crée une tâche avec l'identifiant et la durée précisée. 
+\begin{DoxyParams}{\-Paramètres}
+{\em caract} & \-Identifiant de la tâche. \\
+\hline
+{\em duree} & \-Durée de la tâche. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Pointeur de type task sur une tâche d’identifiant “caract” et de durée “durée”. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 5 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_aeed2363afb8ab9c17aeb64cf5d70b86b}{
+\index{tp3.\-h@{tp3.\-h}!derniere\-\_\-tache@{derniere\-\_\-tache}}
+\index{derniere\-\_\-tache@{derniere\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{derniere\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ derniere\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_aeed2363afb8ab9c17aeb64cf5d70b86b}
+\-Retourne la dernière tâche d'une liste de tâches. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste de tâches \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Dernière tâche 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 139 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_ad28cda3b6ad0d9eeb8574005d1332d22}{
+\index{tp3.\-h@{tp3.\-h}!execute\-\_\-tache\-\_\-\-F\-I\-F\-O@{execute\-\_\-tache\-\_\-\-F\-I\-F\-O}}
+\index{execute\-\_\-tache\-\_\-\-F\-I\-F\-O@{execute\-\_\-tache\-\_\-\-F\-I\-F\-O}!tp3.h@{tp3.\-h}}
+\subsubsection[{execute\-\_\-tache\-\_\-\-F\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ execute\-\_\-tache\-\_\-\-F\-I\-F\-O (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_ad28cda3b6ad0d9eeb8574005d1332d22}
+\-Fonction 7 + 9 \-: \-Exécute une tâche de la liste des tâches selon le mode \-F\-I\-F\-O. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste des tâches à traiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Nouvelle liste des tâches. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 62 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a1c01d87a6dc65ca4d7cea9bb267e6587}{
+\index{tp3.\-h@{tp3.\-h}!execute\-\_\-tache\-\_\-\-L\-I\-F\-O@{execute\-\_\-tache\-\_\-\-L\-I\-F\-O}}
+\index{execute\-\_\-tache\-\_\-\-L\-I\-F\-O@{execute\-\_\-tache\-\_\-\-L\-I\-F\-O}!tp3.h@{tp3.\-h}}
+\subsubsection[{execute\-\_\-tache\-\_\-\-L\-I\-F\-O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ execute\-\_\-tache\-\_\-\-L\-I\-F\-O (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a1c01d87a6dc65ca4d7cea9bb267e6587}
+\-Fonction 8 \-: \-Exécute une tâche de la liste des tâches selon le mode \-L\-I\-F\-O. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste des tâches à traiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Nouvelle liste des tâches. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 73 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a43d50522a645f35a10122ae17360b86a}{
+\index{tp3.\-h@{tp3.\-h}!execution@{execution}}
+\index{execution@{execution}!tp3.h@{tp3.\-h}}
+\subsubsection[{execution}]{\setlength{\rightskip}{0pt plus 5cm}void execution (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{ptask}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a43d50522a645f35a10122ae17360b86a}
+\-Simule l'exécution d'une tâche. 
+\begin{DoxyParams}{\-Paramètres}
+{\em ptask} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Définition à la ligne 193 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_ab8cb0270db7689822c87070e11acce8c}{
+\index{tp3.\-h@{tp3.\-h}!fusion\-\_\-listes@{fusion\-\_\-listes}}
+\index{fusion\-\_\-listes@{fusion\-\_\-listes}!tp3.h@{tp3.\-h}}
+\subsubsection[{fusion\-\_\-listes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ fusion\-\_\-listes (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task1, }
+\item[{{\bf task} $\ast$}]{list\-\_\-task2}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_ab8cb0270db7689822c87070e11acce8c}
+\-Fonction 10 \-: \-Retourne une liste de tâches, résultat de la fusion des 2 listes passées en paramètres. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task1} & \\
+\hline
+{\em list\-\_\-task2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 92 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_ac7de9f16c075fce177f07578838b18ac}{
+\index{tp3.\-h@{tp3.\-h}!insere\-\_\-tache@{insere\-\_\-tache}}
+\index{insere\-\_\-tache@{insere\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{insere\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ insere\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task, }
+\item[{{\bf task} $\ast$}]{toinsert}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_ac7de9f16c075fce177f07578838b18ac}
+\-Insère une tache dans la liste par ordre croissant des durées. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \\
+\hline
+{\em toinsert} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 169 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a16802f6514ce927f75b6e40602afed41}{
+\index{tp3.\-h@{tp3.\-h}!insere\-\_\-tache\-\_\-priorite@{insere\-\_\-tache\-\_\-priorite}}
+\index{insere\-\_\-tache\-\_\-priorite@{insere\-\_\-tache\-\_\-priorite}!tp3.h@{tp3.\-h}}
+\subsubsection[{insere\-\_\-tache\-\_\-priorite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ insere\-\_\-tache\-\_\-priorite (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task, }
+\item[{{\bf task} $\ast$}]{ptache}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a16802f6514ce927f75b6e40602afed41}
+\-Fonction 11 \-: \-Insère une tâche dans la liste par ordre croissant de priorité. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \\
+\hline
+{\em ptache} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 97 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a0011e079774e623de8a227b32330c30e}{
+\index{tp3.\-h@{tp3.\-h}!libere\-\_\-liste@{libere\-\_\-liste}}
+\index{libere\-\_\-liste@{libere\-\_\-liste}!tp3.h@{tp3.\-h}}
+\subsubsection[{libere\-\_\-liste}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ libere\-\_\-liste (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a0011e079774e623de8a227b32330c30e}
+\-Fonction 6 \-: \-Libère l'espace mémoire allouée pour les différents éléments de la liste des tâches. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste des tâches. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Pointeur sur la première tâche de la liste. 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 51 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_aff8eb6ceb279a1298af9fc80e68f3c24}{
+\index{tp3.\-h@{tp3.\-h}!\-M\-A\-J\-\_\-priorite@{\-M\-A\-J\-\_\-priorite}}
+\index{\-M\-A\-J\-\_\-priorite@{\-M\-A\-J\-\_\-priorite}!tp3.h@{tp3.\-h}}
+\subsubsection[{\-M\-A\-J\-\_\-priorite}]{\setlength{\rightskip}{0pt plus 5cm}int \-M\-A\-J\-\_\-priorite (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_aff8eb6ceb279a1298af9fc80e68f3c24}
+\-Fonction 12 \-Baisse les priorités de tous les éléments de la liste de 1. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 129 du fichier tp3.\-c.
+
+\hypertarget{tp3_8h_a6a954ecfdf0ab338c31135461a5bafe2}{
+\index{tp3.\-h@{tp3.\-h}!recherche\-\_\-predecesseur\-\_\-tache@{recherche\-\_\-predecesseur\-\_\-tache}}
+\index{recherche\-\_\-predecesseur\-\_\-tache@{recherche\-\_\-predecesseur\-\_\-tache}!tp3.h@{tp3.\-h}}
+\subsubsection[{recherche\-\_\-predecesseur\-\_\-tache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf task}$\ast$ recherche\-\_\-predecesseur\-\_\-tache (
+\begin{DoxyParamCaption}
+\item[{{\bf task} $\ast$}]{list\-\_\-task, }
+\item[{char}]{caract\mbox{[}\-M\-A\-X\-\_\-\-N\-O\-M+1\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{tp3_8h_a6a954ecfdf0ab338c31135461a5bafe2}
+\-Renvoit le précédesseur de la tâche dont l'indentificateur est spécifié. 
+\begin{DoxyParams}{\-Paramètres}
+{\em list\-\_\-task} & \-Liste des tâches. \\
+\hline
+{\em caract} & \-Identificateur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Renvoie}
+\-Prédécesseur 
+\end{DoxyReturn}
+
+
+\-Définition à la ligne 159 du fichier tp3.\-c.
+
