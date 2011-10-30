@@ -16,6 +16,7 @@
 typedef struct task {
     char ID[MAX_NOM + 1];
     int duree;
+    int priorite;
     struct task *psuivant;
 } task;
 
@@ -85,6 +86,21 @@ task * execute_tache_LIFO(task *list_task);
  */
 task * fusion_listes(task *list_task1, task *list_task2);
 
+/**
+ * Insere une tache dans la liste par ordre croissant de priorite
+ * @param list_task
+ * @param ptache
+ * @return 
+ */
+task * insere_tache_priorite(task *list_task, task *ptache);
+
+/**
+ * Baisse les priorites de tous les elements de la liste de 1
+ * @param list_task
+ * @return 
+ */
+int MAJ_priorite(task *list_task);
+
 
 /**
  * Retourne la dernière tâche d'une listede tâches.
@@ -100,8 +116,6 @@ task* derniere_tache(task *list_task);
  */
 task* avant_derniere_tache(task *list_task);
 
-//task* recherche_tache(task *list_task, char caract[MAX_NOM + 1]);
-
 /**
  * Renvoit le précédesseur de la tâche dont l'indentificateur est spécifié.
  * @param list_task Liste des tâches.
@@ -111,7 +125,7 @@ task* avant_derniere_tache(task *list_task);
 task* recherche_predecesseur_tache(task *list_task, char caract[MAX_NOM + 1]);
 
 /**
- * Insere une tache dans la liste précisée en paramètre
+ * Insere une tache dans la liste par ordre croissant des durees
  * @param list_task
  * @param toinsert
  * @return 
@@ -131,6 +145,14 @@ void execution(task *ptask);
  * @return 
  */
 task * charger_tache(FILE* file, task* list_task);
+
+/**
+ * Charge une tache dans la liste depuis un fichier en utilisant les priorites
+ * @param file
+ * @param list_task
+ * @return 
+ */
+task * charger_tache_priorite(FILE* file, task* list_task);
 
 #endif	/* TP3_H */
 

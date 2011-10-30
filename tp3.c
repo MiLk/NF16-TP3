@@ -94,7 +94,47 @@ task * execute_tache_LIFO(task *list_task)
 
 task * fusion_listes(task *list_task1, task *list_task2)
 {
-    
+
+}
+
+task * insere_tache_priorite(task *list_task, task *ptache)
+{
+    task* ptask = list_task;
+
+    ptache->priorite = (int) (ptache->duree / 10);
+    if (ptache->priorite > 5)
+        ptache->priorite = 5;
+    if(ptache->priorite < 1)
+        ptache->priorite = 1;
+
+    if (list_task == NULL)
+        return cree_liste(ptache);
+
+    while (ptache->priorite > ptask->priorite)
+    {
+        if (ptask->psuivant == NULL)
+        {
+            ajoute_tache(ptask, ptache);
+            return list_task;
+        }
+        if (ptask->psuivant->priorite >= ptache->priorite)
+        {
+            ptache->psuivant = ptask->psuivant;
+            ptask->psuivant = ptache;
+            return list_task;
+        }
+        ptask = ptask->psuivant;
+    }
+    ptache->psuivant = ptask;
+    return ptache;
+}
+
+int MAJ_priorite(task *list_task)
+{
+    if(list_task == NULL) return 0;
+    if (list_task->priorite > 1)
+        list_task->priorite--;
+    return MAJ_priorite(list_task->psuivant);
 }
 
 // Fonctions supplémentaires
@@ -118,18 +158,6 @@ task* avant_derniere_tache(task *list_task)
     }
     return ptask;
 }
-
-/*
-task* recherche_tache(task *list_task, char caract[MAX_NOM + 1])
-{
-    task *ptask = list_task;
-    while (ptask->psuivant != NULL && strcmp(ptask->ID, caract))
-    {
-        ptask = ptask->psuivant;
-    }
-    return ptask;
-}
- */
 
 task* recherche_predecesseur_tache(task *list_task, char caract[MAX_NOM + 1])
 {
@@ -163,12 +191,11 @@ task * inserer_tache(task *list_task, task *toinsert)
     }
     toinsert->psuivant = ptask;
     return toinsert;
-
 }
 
 void execution(task *ptask)
 {
-    printf("Execution : %s\n", ptask->ID);
+    printf("Execution : %s - %d sec - priority %d\n", ptask->ID, ptask->duree, ptask->priorite);
 #if defined(_DARWIN_C_SOURCE)
     sleep(ptask->duree);
 #elif defined(_WIN32)
@@ -186,4 +213,15 @@ task * charger_tache(FILE* fsource, task* list)
     ptask = cree_tache(nom, duree);
     printf("Chargement : %s\n", ptask->ID);
     return inserer_tache(list, ptask);
+}
+
+task * charger_tache_priorite(FILE* fsource, task* list)
+{
+    char nom[256];
+    int duree;
+    task *ptask = NULL;
+
+    if (fscanf(fsource, "%s\t%d\n", nom, &duree) == EOF) return list;
+    ptask = cree_tache(nom, duree);
+    return insere_tache_priorite(list, ptask);
 }
