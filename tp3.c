@@ -65,7 +65,6 @@ task * execute_tache_FIFO(task *list_task)
     {
         task* next = list_task->psuivant;
         execution(list_task);
-        free(list_task);
         return next;
     } else
         return list_task;
@@ -79,13 +78,11 @@ task * execute_tache_LIFO(task *list_task)
         if (ptask->psuivant != NULL)
         {
             execution(ptask->psuivant);
-            free(ptask->psuivant);
             ptask->psuivant = NULL;
             return list_task;
         } else
         {
             execution(ptask);
-            free(ptask);
             return NULL;
         }
     } else
@@ -169,7 +166,7 @@ task* recherche_predecesseur_tache(task *list_task, char caract[MAX_NOM + 1])
     return ptask;
 }
 
-task * inserer_tache(task *list_task, task *toinsert)
+task * insere_tache(task *list_task, task *toinsert)
 {
     task* ptask = list_task;
     if (list_task == NULL)
@@ -201,21 +198,22 @@ void execution(task *ptask)
 #elif defined(_WIN32)
     Sleep(ptask->duree * 1000);
 #endif
+    free(ptask);
 }
 
-task * charger_tache(FILE* fsource, task* list)
+task * charge_tache(FILE* fsource, task* list)
 {
-    char nom[256];
+    char nom[MAX_NOM];
     int duree;
     task *ptask = NULL;
 
     if (fscanf(fsource, "%s\t%d\n", nom, &duree) == EOF) return list;
     ptask = cree_tache(nom, duree);
     printf("Chargement : %s\n", ptask->ID);
-    return inserer_tache(list, ptask);
+    return insere_tache(list, ptask);
 }
 
-task * charger_tache_priorite(FILE* fsource, task* list)
+task * charge_tache_priorite(FILE* fsource, task* list)
 {
     char nom[256];
     int duree;
