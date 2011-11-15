@@ -1,6 +1,6 @@
 #include "tp3.h"
 
-// Fonctions Ã  rÃ©aliser
+// Fonctions à réaliser
 
 task * cree_tache(char caract[MAX_NOM + 1], int duree)
 {
@@ -91,7 +91,23 @@ task * execute_tache_LIFO(task *list_task)
 
 task * fusion_listes(task *list_task1, task *list_task2)
 {
-
+    task* pt1 = list_task1;
+    task* pt2 = list_task2;
+    task* ptask = NULL;
+    task* pnext = ptask;
+    while(pt1->psuivant != NULL && pt2->psuivant != NULL){
+        if((pt1 != NULL) && (pt1->duree < pt2->duree || pt2 == NULL){
+            pnext->psuivant = pt1;
+            pt1 = pt1->psuivant;
+            pnext = pnext->psuivant;
+        }
+        else{
+            pnext->suivant = pt2;
+            pnext = pnext->psuivant;
+            }
+    }
+    pnext->psuivant = NULL;
+    return ptask;
 }
 
 task * insere_tache_priorite(task *list_task, task *ptache)
@@ -134,7 +150,7 @@ int MAJ_priorite(task *list_task)
     return MAJ_priorite(list_task->psuivant);
 }
 
-// Fonctions supplÃ©mentaires
+// Fonctions supplémentaires
 
 task* derniere_tache(task *list_task)
 {
