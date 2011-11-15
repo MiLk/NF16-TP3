@@ -1,6 +1,6 @@
 #include "tp3.h"
 
-// Fonctions à réaliser
+// Fonctions ï¿½ rï¿½aliser
 
 task * cree_tache(char caract[MAX_NOM + 1], int duree)
 {
@@ -95,18 +95,22 @@ task * fusion_listes(task *list_task1, task *list_task2)
     task* pt2 = list_task2;
     task* ptask = NULL;
     task* pnext = ptask;
-    while(pt1->psuivant != NULL && pt2->psuivant != NULL){
-        if((pt1 != NULL) && (pt1->duree < pt2->duree || pt2 == NULL){
+    while (pt1->psuivant != NULL && pt2->psuivant != NULL)
+    {
+
+        if ((pt1 != NULL) && (pt1->duree < pt2->duree || pt2 == NULL))
+        {
             pnext->psuivant = pt1;
             pt1 = pt1->psuivant;
             pnext = pnext->psuivant;
-        }
-        else{
-            pnext->suivant = pt2;
+        } else
+        {
+            pnext->psuivant = pt2;
             pnext = pnext->psuivant;
-            }
+        }
     }
     pnext->psuivant = NULL;
+
     return ptask;
 }
 
@@ -117,7 +121,7 @@ task * insere_tache_priorite(task *list_task, task *ptache)
     ptache->priorite = (int) (ptache->duree / 10);
     if (ptache->priorite > 5)
         ptache->priorite = 5;
-    if(ptache->priorite < 1)
+    if (ptache->priorite < 1)
         ptache->priorite = 1;
 
     if (list_task == NULL)
@@ -139,24 +143,27 @@ task * insere_tache_priorite(task *list_task, task *ptache)
         ptask = ptask->psuivant;
     }
     ptache->psuivant = ptask;
+
     return ptache;
 }
 
 int MAJ_priorite(task *list_task)
 {
-    if(list_task == NULL) return 0;
+    if (list_task == NULL) return 0;
     if (list_task->priorite > 1)
         list_task->priorite--;
+
     return MAJ_priorite(list_task->psuivant);
 }
 
-// Fonctions supplémentaires
+// Fonctions supplï¿½mentaires
 
 task* derniere_tache(task *list_task)
 {
     task *ptask = list_task;
     while (ptask->psuivant != NULL)
     {
+
         ptask = ptask->psuivant;
     }
     return ptask;
@@ -167,6 +174,7 @@ task* avant_derniere_tache(task *list_task)
     task *ptask = list_task;
     while (ptask->psuivant != NULL && ptask->psuivant->psuivant != NULL)
     {
+
         ptask = ptask->psuivant;
     }
     return ptask;
@@ -177,6 +185,7 @@ task* recherche_predecesseur_tache(task *list_task, char caract[MAX_NOM + 1])
     task *ptask = list_task;
     while (ptask->psuivant != NULL && strcmp(ptask->psuivant->ID, caract))
     {
+
         ptask = ptask->psuivant;
     }
     return ptask;
@@ -203,11 +212,13 @@ task * insere_tache(task *list_task, task *toinsert)
         ptask = ptask->psuivant;
     }
     toinsert->psuivant = ptask;
+
     return toinsert;
 }
 
 void execution(task *ptask)
 {
+
     printf("Execution : %s - %d sec - priority %d\n", ptask->ID, ptask->duree, ptask->priorite);
 #if defined(_DARWIN_C_SOURCE)
     sleep(ptask->duree);
@@ -226,6 +237,7 @@ task * charge_tache(FILE* fsource, task* list)
     if (fscanf(fsource, "%s\t%d\n", nom, &duree) == EOF) return list;
     ptask = cree_tache(nom, duree);
     printf("Chargement : %s\n", ptask->ID);
+
     return insere_tache(list, ptask);
 }
 
