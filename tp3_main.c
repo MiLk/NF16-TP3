@@ -4,7 +4,7 @@ int main(int argc, char** argv)
 {
     int n, stop = 0, i = 0;
     stop = 0;
-    task *list = NULL, *temp_task = NULL;
+    task *list = NULL, *list2 = NULL, *temp_task = NULL;
     FILE* fsource;
     char caract[MAX_NOM + 1];
     int duree;
@@ -21,10 +21,13 @@ int main(int argc, char** argv)
         printf("7 - execute_tache_FIFO.\n");
         printf("8 - execute_tache_LIFO.\n");
         printf("9 - fusion_listes.\n");
-        printf("10 - insere_tache_priorite.\n");
-        printf("11 - MAJ_priorite.\n");
-        printf("12 - Simulation avec priorite selon la duree.\n");
-        printf("13 - Simulation avec priorite dynamique.\n");
+		printf("10 - insere_tache.\n");
+        printf("11 - insere_tache_priorite.\n");
+        printf("12 - MAJ_priorite.\n");
+        printf("13 - Simulation avec priorite selon la duree.\n");
+        printf("14 - Simulation avec priorite dynamique.\n");
+		printf("15 - Copier la liste principal dans une liste secondaire.\n");
+		printf("16 - Generation et fusion de deux listes.\n");
         scanf("%d", &n);
         switch (n)
         {
@@ -63,17 +66,28 @@ int main(int argc, char** argv)
             case 8: 
                 execute_tache_LIFO(list);
                 break;
-            case 9: 
+            case 9:
+				printf("Liste principale\n");
+				affiche_liste(list);
+				printf("Liste secondaire\n");
+				affiche_liste(list2);
+				printf("Liste fusionnee\n");
+				list = fusion_listes(list,list2);
+				affiche_liste(list);
                 break;
             case 10: 
-                insere_tache_priorite(list,temp_task);
+                list = insere_tache(list,temp_task);
+                printf("La tache courant a ete inseree a la liste en fonction de sa duree\n");
+                break;
+			case 11: 
+                list = insere_tache_priorite(list,temp_task);
                 printf("La tache courant a ete inseree a la liste en fonction de sa priorite\n");
                 break;
-            case 11:
+            case 12:
                 MAJ_priorite(list);
                 printf("Les priorites ont ete mises a jour.\n");
                 break;
-            case 12:
+            case 13:
                 printf("\n\nPriorite selon la duree des taches\n\n");
                 fsource = fopen("tasks.dat", "r");
                 for (i = 0; i < 10; i++)
@@ -87,7 +101,7 @@ int main(int argc, char** argv)
                 }
                 fclose(fsource);
                 break;
-            case 13:
+            case 14:
                 printf("\n\nChangement dynamique de priorite\n\n");
 
                 list = NULL;
@@ -104,15 +118,39 @@ int main(int argc, char** argv)
                 }
                 fclose(fsource);
                 break;
+			case 15:
+				list2 = list;
+				break;
+			case 16: 
+				temp_task = cree_tache("a",3);
+				list = cree_liste(temp_task);
+				temp_task = cree_tache("b",4);
+				list = insere_tache(list,temp_task);
+				temp_task = cree_tache("g",7);
+				list = insere_tache(list,temp_task);
+				temp_task = cree_tache("h",9);
+				list = insere_tache(list,temp_task);
+				printf("Liste principale\n");
+				affiche_liste(list);
+				temp_task = cree_tache("c",5);
+				list2 = cree_liste(temp_task);
+				temp_task = cree_tache("d",2);
+				list2 = insere_tache(list2,temp_task);
+				temp_task = cree_tache("e",12);
+				list2 = insere_tache(list2,temp_task);
+				temp_task = cree_tache("f",8);
+				list2 = insere_tache(list2,temp_task);
+				printf("Liste secondaire\n");
+				affiche_liste(list2);
+				printf("Liste fusionnee\n");
+				list = fusion_listes(list,list2);
+				affiche_liste(list);
+                break;
             default: stop = 1;
                 break;
         }
     }
 
-#if defined(_WIN32)
-    printf("Appuyez sur une touche pour quitter\n");
-    getchar();
-#endif
     return (EXIT_SUCCESS);
 }
 

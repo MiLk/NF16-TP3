@@ -6,6 +6,7 @@ task * cree_tache(char caract[MAX_NOM + 1], int duree)
 {
     task *ptask = (task*) malloc(sizeof (task));
     int i = 0;
+	// On copie les caracteres de la chaine un par un
     for (i = 0; i <= MAX_NOM; i++)
         ptask->ID[i] = caract[i];
     ptask->duree = duree;
@@ -63,8 +64,11 @@ task * execute_tache_FIFO(task *list_task)
 {
     if (list_task != NULL)
     {
+		// On recupere le deuxieme element de la liste
         task* next = list_task->psuivant;
+		// On execute le premier element
         execution(list_task);
+		// On retourne la liste commencant par le deuxieme element
         return next;
     } else
         return list_task;
@@ -91,26 +95,43 @@ task * execute_tache_LIFO(task *list_task)
 
 task * fusion_listes(task *list_task1, task *list_task2)
 {
-    task* pt1 = list_task1;
-    task* pt2 = list_task2;
-    task* ptask = NULL;
-    task* pnext = ptask;
-    while (pt1->psuivant != NULL && pt2->psuivant != NULL)
+	if(list_task1 == NULL) return list_task2;
+	if(list_task2 == NULL) return list_task1;
+    task *pt1 = list_task1,*pt2 = list_task2;
+    task *ptask = NULL, *pprev = NULL;
+    while (!(pt1 == NULL && pt2 == NULL))
     {
-
+		/*
+		 * Si la tache 1 est non nulle
+		 * ET si le tache 1 est plus courte que la tache 2
+		 *		OU que la tache 2 est nulle
+		 * On met la tache 1 dans la liste
+		 */
         if ((pt1 != NULL) && (pt1->duree < pt2->duree || pt2 == NULL))
         {
-            pnext->psuivant = pt1;
-            pt1 = pt1->psuivant;
-            pnext = pnext->psuivant;
-        } else
+			if(ptask == NULL)
+				ptask = pt1; // On initialise la liste avec le premier element
+			else
+				pprev->psuivant = pt1; // On passe l'element suivant de l'element venant d'etre traite a l'emement courant
+			pprev = pt1; // On indique l'element venant d'etre traite
+			pt1 = pt1->psuivant; // On passe a l'element suivant de la liste 1
+        }
+		/*
+		 * Si la tache 1 est nulle
+		 * OU Si la tache 2 est plus courte ou égale à la tache 1
+		 *		ET que la tache 2 est non nulle
+		 * On met la tache 2 dans la liste
+		 */
+		else
         {
-            pnext->psuivant = pt2;
-            pnext = pnext->psuivant;
+			if(ptask == NULL)
+				ptask = pt2; // On initialise la liste avec le premier element
+			else
+				pprev->psuivant = pt2; // On passe l'element suivant de l'element venant d'etre traite a l'emement courant
+			pprev = pt2; // On indique l'element venant d'etre traite
+			pt2 = pt2->psuivant; // On passe a l'element suivant de la liste 2
         }
     }
-    pnext->psuivant = NULL;
-
     return ptask;
 }
 
@@ -142,8 +163,8 @@ task * insere_tache_priorite(task *list_task, task *ptache)
         }
         ptask = ptask->psuivant;
     }
+	// Duree de la tache a inserer < duree de la premiere tache
     ptache->psuivant = ptask;
-
     return ptache;
 }
 
@@ -211,8 +232,8 @@ task * insere_tache(task *list_task, task *toinsert)
         }
         ptask = ptask->psuivant;
     }
+	// Duree de la tache a inserer < duree de la premiere tache
     toinsert->psuivant = ptask;
-
     return toinsert;
 }
 
@@ -236,18 +257,20 @@ task * charge_tache(FILE* fsource, task* list)
 
     if (fscanf(fsource, "%s\t%d\n", nom, &duree) == EOF) return list;
     ptask = cree_tache(nom, duree);
-    printf("Chargement : %s\n", ptask->ID);
+    printf("Chargement de la tache : %s\n", ptask->ID);
 
     return insere_tache(list, ptask);
 }
 
 task * charge_tache_priorite(FILE* fsource, task* list)
 {
-    char nom[256];
+    char nom[MAX_NOM];
     int duree;
     task *ptask = NULL;
 
     if (fscanf(fsource, "%s\t%d\n", nom, &duree) == EOF) return list;
     ptask = cree_tache(nom, duree);
+	printf("Chargement avec priorite de la tache : %s\n", ptask->ID);
+
     return insere_tache_priorite(list, ptask);
 }
