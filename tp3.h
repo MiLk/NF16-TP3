@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "string.h"
 
+// En fonction de l'OS les librairies sont différentes
 #if defined(_DARWIN_C_SOURCE)
 #include "unistd.h"
 #elif defined(_WIN32)

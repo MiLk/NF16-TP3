@@ -78,14 +78,19 @@ task * execute_tache_LIFO(task *list_task)
 {
     if (list_task != NULL)
     {
+        // On recupere l'avant derniere tache
         task* ptask = avant_derniere_tache(list_task);
         if (ptask->psuivant != NULL)
         {
+            // On execute la derniere tache
             execution(ptask->psuivant);
+            // On supprime la derniere tache de la liste
             ptask->psuivant = NULL;
             return list_task;
         } else
+        // La liste ne possède qu'une seule tache
         {
+            // On execute la seule tache et on renvoit une liste vide
             execution(ptask);
             return NULL;
         }
@@ -145,6 +150,7 @@ task * insere_tache_priorite(task *list_task, task *ptache)
     if (ptache->priorite < 1)
         ptache->priorite = 1;
 
+    // Si la liste est vide, on l'initialise avec la tache passee en parametre
     if (list_task == NULL)
         return cree_liste(ptache);
 
@@ -152,18 +158,21 @@ task * insere_tache_priorite(task *list_task, task *ptache)
     {
         if (ptask->psuivant == NULL)
         {
+            // Si l'on est sur la derniere tache de la liste, on ajoute la tache à la fin
             ajoute_tache(ptask, ptache);
             return list_task;
         }
         if (ptask->psuivant->priorite >= ptache->priorite)
         {
+            // On insere notre tache si la priorite de la tache suivante est plus grande que celle de la tache a inserer
             ptache->psuivant = ptask->psuivant;
             ptask->psuivant = ptache;
             return list_task;
         }
         ptask = ptask->psuivant;
     }
-    // Duree de la tache a inserer < duree de la premiere tache
+    // Priorite de la tache a inserer < priorite de la premiere tache
+    // On ajoute la tache au début
     ptache->psuivant = ptask;
     return ptache;
 }
@@ -177,16 +186,13 @@ int MAJ_priorite(task *list_task)
     return MAJ_priorite(list_task->psuivant);
 }
 
-// Fonctions suppl�mentaires
+// Fonctions supplementaires
 
 task* derniere_tache(task *list_task)
 {
     task *ptask = list_task;
     while (ptask->psuivant != NULL)
-    {
-
         ptask = ptask->psuivant;
-    }
     return ptask;
 }
 
@@ -194,10 +200,7 @@ task* avant_derniere_tache(task *list_task)
 {
     task *ptask = list_task;
     while (ptask->psuivant != NULL && ptask->psuivant->psuivant != NULL)
-    {
-
         ptask = ptask->psuivant;
-    }
     return ptask;
 }
 
@@ -205,27 +208,27 @@ task* recherche_predecesseur_tache(task *list_task, char caract[MAX_NOM + 1])
 {
     task *ptask = list_task;
     while (ptask->psuivant != NULL && strcmp(ptask->psuivant->ID, caract))
-    {
-
         ptask = ptask->psuivant;
-    }
     return ptask;
 }
 
 task * insere_tache(task *list_task, task *toinsert)
 {
     task* ptask = list_task;
+    // Si la liste est vide, on l'initialise avec la tache passee en parametre
     if (list_task == NULL)
         return cree_liste(toinsert);
     while (toinsert->duree > ptask->duree)
     {
         if (ptask->psuivant == NULL)
         {
+            // Si l'on est sur la derniere tache de la liste, on ajoute la tache à la fin
             ajoute_tache(ptask, toinsert);
             return list_task;
         }
         if (ptask->psuivant->duree >= toinsert->duree)
         {
+            // On insere notre tache si la duree de la tache suivante est plus grande que celle de la tache a inserer
             toinsert->psuivant = ptask->psuivant;
             ptask->psuivant = toinsert;
             return list_task;
@@ -233,14 +236,15 @@ task * insere_tache(task *list_task, task *toinsert)
         ptask = ptask->psuivant;
     }
     // Duree de la tache a inserer < duree de la premiere tache
+    // On ajoute la tache au debut
     toinsert->psuivant = ptask;
     return toinsert;
 }
 
 void execution(task *ptask)
 {
-
     printf("Execution : %s - %d sec - priority %d\n", ptask->ID, ptask->duree, ptask->priorite);
+    // En fonction de l'OS on utilise des fonctions de librairies différentes
 #if defined(_DARWIN_C_SOURCE)
     sleep(ptask->duree);
 #elif defined(_WIN32)
