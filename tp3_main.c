@@ -3,7 +3,6 @@
 int main(int argc, char** argv)
 {
     int n, stop = 0, i = 0;
-    stop = 0;
     task *list = NULL, *list2 = NULL, *temp_task = NULL;
     FILE* fsource;
     char caract[MAX_NOM + 1];
