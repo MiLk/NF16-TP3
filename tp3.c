@@ -10,6 +10,7 @@ task * cree_tache(char caract[MAX_NOM + 1], int duree)
     for (i = 0; i <= MAX_NOM; i++)
         ptask->ID[i] = caract[i];
     ptask->duree = duree;
+    ptask->priorite = 1;
     ptask->psuivant = NULL;
     return ptask;
 }

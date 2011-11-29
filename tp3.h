@@ -15,7 +15,7 @@
 /**
  * Longueur maximale de l'identifiant de tâche
  */
-#define MAX_NOM 3
+#define MAX_NOM 10 
 
 /**
  * \struct task
